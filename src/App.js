@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import FormComponent from './component/formComponent';
+import Table from './component/userTable';
+import TableData from './TableData';
+
+import { Layout } from 'antd';
+const { Header, Content } = Layout;
+
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      user : TableData
+    }
+  }
+ 
+  render() { 
+      return (
+        <div className="App">
+          <Layout>
+            <Header className="App-header">
+              <h1 className="App-h1">User Form</h1>
+            </Header>
+            <Content className = "App-content">
+              <FormComponent data={this.state} />
+              <Table key={Table.key} data={TableData} />; 
+            </Content>
+          </Layout>
+        </div>
+      );
+  }
 }
 
 export default App;
